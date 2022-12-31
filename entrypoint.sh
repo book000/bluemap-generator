@@ -10,7 +10,15 @@ fi
 java -jar /app/cli.jar -r
 
 DATE=$(date +%Y-%m-%d)
-tar --exclude "*.gz" -cvf "/app/web/web-${DATE}.tar.gz" /app/web
+DATETIME=$(date +%Y-%m-%d-%H-%M-%S)
+echo "${DATETIME}" > /app/web/VERSION
 
-rm -f /app/web/web-latest.tar.gz || true
-cp "/app/web/web-${DATE}.tar.gz" /app/web/web-latest.tar.gz
+# Create tar only if ENABLE_TAR is true
+# shellcheck disable=SC2154
+if [ "${ENABLE_TAR}" = "true" ]; then
+  echo "Creating tar file..."
+  tar --exclude "*.gz" -cvf "/app/web/web-${DATE}.tar.gz" /app/web
+
+  rm -f /app/web/web-latest.tar.gz || true
+  cp "/app/web/web-${DATE}.tar.gz" /app/web/web-latest.tar.gz
+fi
