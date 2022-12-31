@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - type: bind
+        source: ./world
+        target: /app/world
+        read_only: true
+      - type: bind
+        source: ./web
+        target: /app/web
+      - type: bind
+        source: ./config
+        target: /app/config
+        read_only: true
+    init: true
