@@ -14,5 +14,6 @@ RUN DOWNLOAD_URL=$(curl -s https://api.github.com/repos/BlueMap-Minecraft/BlueMa
   curl -L -o cli.jar "$DOWNLOAD_URL"
 
 COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 ENTRYPOINT [ "/app/entrypoint.sh" ]
