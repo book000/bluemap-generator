@@ -10,7 +10,7 @@ fi
 java -jar /app/cli.jar -r
 
 DATE=$(date +%Y-%m-%d)
-tar cvf "/app/web/web-${DATE}.tar.gz" /app/web
+tar --exclude "*.gz" -cvf "/app/web/web-${DATE}.tar.gz" /app/web
 
 rm -f /app/web/web-latest.tar.gz || true
 cp "/app/web/web-${DATE}.tar.gz" /app/web/web-latest.tar.gz
