@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    image: book000/bluemap-generator
     volumes:
       - type: bind
         source: ./world
