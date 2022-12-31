@@ -16,4 +16,6 @@ RUN DOWNLOAD_URL=$(curl -s https://api.github.com/repos/BlueMap-Minecraft/BlueMa
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
+ENV ENABLE_TAR=false
+
 ENTRYPOINT [ "/app/entrypoint.sh" ]
